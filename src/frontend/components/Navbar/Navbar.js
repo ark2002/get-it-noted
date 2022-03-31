@@ -1,8 +1,23 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+
+import { useAuth } from "../../context";
+
 import "./Navbar.css"
 
 const Navbar = () => {
     const [listVisibility, setListVisibility] = useState(false)
+    const { auth, setAuth } = useAuth();
+
+    const signOutHandler = (setAuth) => {
+        localStorage.removeItem("AUTH_TOKEN");
+        setAuth((auth) => ({
+            ...auth,
+            status: false,
+            token: null,
+            userName:"No Account",
+        }));
+    };
     return (
         <>
             <header className="header flex--row">
@@ -20,16 +35,20 @@ const Navbar = () => {
                 </div>
                 <nav className="navbar__nav flex--row">
                     <ul>
-                        <li onClick={()=>setListVisibility(!listVisibility)}>
+                        <li onClick={() => setListVisibility(!listVisibility)}>
                             <a className="flex--row nav__account__container"><span className="material-icons account-icon" title="Account">account_circle</span>
-                                <span className="font__primary text__small">Name </span>▼
+                                <span className="font__primary text__small">{auth.userName}</span>▼
                             </a>
                         </li>
                     </ul>
                 </nav>
             </header>
-            {listVisibility && <div className="dropdown-list secondary__font text__small">
-                <li>Log Out</li></div>}
+            {listVisibility && (!auth.status ? <div className="dropdown-list secondary__font text__small">
+                <NavLink to="/signin"><li>Sign-In</li></NavLink>
+                <NavLink to="/signup"><li>Sign-Up</li></NavLink>
+            </div> : <div className="dropdown-list secondary__font text__small">
+                <NavLink to="/"><li onClick={() => signOutHandler(setAuth)}>Log-Out</li></NavLink>
+            </div>)}
         </>
     );
 }
