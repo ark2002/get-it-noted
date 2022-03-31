@@ -1,0 +1,16 @@
+.nav__account__container{
+    align-items: center;
+}
+
+.material-icons.account-icon{
+    font-size: 4rem;
+}
+
+.dropdown-list {
+    width: 10rem;
+    background-color: var(--white-color);
+    text-align: center;
+    position: fixed;
+    right: 0;
+    z-index: 2;
+}
