@@ -15,7 +15,7 @@ const Navbar = () => {
             ...auth,
             status: false,
             token: null,
-            userName:"No Account",
+            userName:"",
         }));
     };
     return (
