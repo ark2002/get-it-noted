@@ -1,0 +1,50 @@
+.login__form {
+    gap: 1rem;
+    width: 30%;
+    margin: 10rem auto;
+    padding: 2rem 5rem;
+    box-shadow: #0000003d 0px 3px 8px;
+    top: 40%;
+}
+
+.login__header {
+    align-self: center;
+}
+
+.rememberme {
+    align-items: center;
+    gap: 1rem;
+}
+
+.password-field {
+    align-items: center;
+    gap: 1rem;
+}
+
+.password-field>input.password {
+    width: 100%;
+}
+
+.password-field>:last-child {
+    cursor: pointer;
+    user-select: none;
+}
+
+.login__bottom-container>.btn {
+    width: 50%;
+    margin: 1rem;
+}
+
+.btn-transparent--primary {
+    border: none;
+    color: var(--primary-color);
+}
+
+.btn-transparent--primary:hover {
+    background-color: var(--hover-color);
+}
+
+.forgotpassword {
+    color: var(--secondary-color);
+    text-align: center;
+}
