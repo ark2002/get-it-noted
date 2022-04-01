@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import { useAuth } from "../../context";
 
 import "./Navbar.css"
 
-const Navbar = () => {
+const Navbar = ({searchRestrict}) => {
     const [listVisibility, setListVisibility] = useState(false)
     const { auth, setAuth } = useAuth();
+
+    const location = useLocation();
 
     const signOutHandler = (setAuth) => {
         localStorage.removeItem("AUTH_TOKEN");
@@ -27,12 +29,12 @@ const Navbar = () => {
                         <h2 className="header__logo">Get It Noted</h2>
                     </div>
                 </NavLink>
-                <div className="navbar__search-container flex--row">
+                {searchRestrict(location.pathname)&&<div className="navbar__search-container flex--row">
                     <input type="text" className="navbar__search input__txt" placeholder="Search" />
                     <button className="navbar__search-btn btn">
                         <span className="material-icons search__btn-icon">search</span>
                     </button>
-                </div>
+                </div>}
                 <nav className="navbar__nav flex--row">
                     <ul>
                         <li onClick={() => setListVisibility(!listVisibility)}>

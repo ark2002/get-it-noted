@@ -27,7 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar searchRestrict={sidebarRestrict} />
       <div className={flexToggle(location.pathname)}>
         {sidebarRestrict(location.pathname) && <Sidebar />}
         <Router />
