@@ -35,7 +35,7 @@
     margin: 1rem;
 }
 
-.btn-transparent--primary {
+.btn.btn-transparent--primary {
     border: none;
     color: var(--primary-color);
 }
