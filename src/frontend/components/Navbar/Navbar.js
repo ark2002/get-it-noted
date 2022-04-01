@@ -15,18 +15,18 @@ const Navbar = () => {
             ...auth,
             status: false,
             token: null,
-            userName:"",
+            userName: "",
         }));
     };
     return (
         <>
             <header className="header flex--row">
-                <a href="/index.html">
+                <NavLink to="/">
                     <div className="header__logo-container flex--row">
                         <img src="/assets/Logo.png" alt="logo image" className="logo__img" />
                         <h2 className="header__logo">Get It Noted</h2>
                     </div>
-                </a>
+                </NavLink>
                 <div className="navbar__search-container flex--row">
                     <input type="text" className="navbar__search input__txt" placeholder="Search" />
                     <button className="navbar__search-btn btn">
