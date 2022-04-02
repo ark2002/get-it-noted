@@ -5,7 +5,7 @@ import { useAuth } from "../../context";
 
 import "./Navbar.css"
 
-const Navbar = ({searchRestrict}) => {
+const Navbar = ({ searchRestrict }) => {
     const [listVisibility, setListVisibility] = useState(false)
     const { auth, setAuth } = useAuth();
 
@@ -13,6 +13,7 @@ const Navbar = ({searchRestrict}) => {
 
     const signOutHandler = (setAuth) => {
         localStorage.removeItem("AUTH_TOKEN");
+        localStorage.removeItem("USERNAME");
         setAuth((auth) => ({
             ...auth,
             status: false,
@@ -29,7 +30,7 @@ const Navbar = ({searchRestrict}) => {
                         <h2 className="header__logo">Get It Noted</h2>
                     </div>
                 </NavLink>
-                {searchRestrict(location.pathname)&&<div className="navbar__search-container flex--row">
+                {searchRestrict(location.pathname) && <div className="navbar__search-container flex--row">
                     <input type="text" className="navbar__search input__txt" placeholder="Search" />
                     <button className="navbar__search-btn btn">
                         <span className="material-icons search__btn-icon">search</span>
@@ -46,10 +47,10 @@ const Navbar = ({searchRestrict}) => {
                 </nav>
             </header>
             {listVisibility && (!auth.status ? <div className="dropdown-list secondary__font text__small">
-                <NavLink to="/signin"><li>Sign-In</li></NavLink>
-                <NavLink to="/signup"><li>Sign-Up</li></NavLink>
+                <NavLink to="/signin" onClick={() => setListVisibility(!listVisibility)}><li>Sign-In</li></NavLink>
+                <NavLink to="/signup" onClick={() => setListVisibility(!listVisibility)}><li>Sign-Up</li></NavLink>
             </div> : <div className="dropdown-list secondary__font text__small">
-                <NavLink to="/"><li onClick={() => signOutHandler(setAuth)}>Log-Out</li></NavLink>
+                <NavLink to="/"><li onClick={() => { signOutHandler(setAuth); setListVisibility(!listVisibility) }}>Log-Out</li></NavLink>
             </div>)}
         </>
     );
