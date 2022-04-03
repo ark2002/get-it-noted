@@ -1,8 +1,8 @@
-.nav__account__container{
+.nav__account__container {
     align-items: center;
 }
 
-.material-icons.account-icon{
+.material-icons.account-icon {
     font-size: 4rem;
 }
 
@@ -13,4 +13,8 @@
     position: fixed;
     right: 0;
     z-index: 2;
+}
+
+nav>li:hover {
+    font-weight: 600;
 }
