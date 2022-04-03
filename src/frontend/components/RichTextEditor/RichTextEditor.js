@@ -25,11 +25,7 @@ export const formats = [
 ];
 
 
-const RichTextEditor = () => {
-    const [state, setState] = React.useState({ value: null });
-    const handleChange = value => {
-        setState({ value });
-    };
+const RichTextEditor = ({ content, setValue }) => {
     return (
         <>
             <div className="flex--column editor__container">
@@ -55,8 +51,8 @@ const RichTextEditor = () => {
                     </div>
                     <ReactQuill
                         theme="snow"
-                        value={state.value}
-                        onChange={handleChange}
+                        value={content}
+                        onChange={value => setValue({ type: "CONTENT", payload: value })}
                         placeholder={"Write something awesome..."}
                         modules={modules}
                         formats={formats}

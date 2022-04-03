@@ -1,33 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
+import { useAuth, useNotes } from "../../context";
+import { noteDetailsReducer } from "../../Reducer";
+import { newNoteToDbService } from "../../services";
 import { RichTextEditor } from "../RichTextEditor/RichTextEditor";
 
 import "./EditableNote.css";
 
 const EditableNote = () => {
-    const [colorlist, setColorlist] = useState(false)
+
+    const noteInitialState = {
+        title: "",
+        pinned: false,
+        label: "",
+        content: "",
+        color: "note--color1",
+    }
+
+    const [noteDetails, dispatchNoteDetails] = useReducer(noteDetailsReducer, noteInitialState);
+    const { title, pinned, label, content, color } = noteDetails;
+
+    const [colorlist, setColorlist] = useState(false);
+    const [labellist, setLabellist] = useState(false);
+
+    const { auth } = useAuth();
+    const { setNotes } = useNotes();
+
+    const newNoteAddHandler = async () => {
+        const response = await newNoteToDbService(auth.token, {
+            ...noteDetails
+        });
+        if (response !== undefined) {
+            setNotes(response);
+            dispatchNoteDetails({ type: "RESET", payload: noteInitialState });
+        }
+    };
+
     return (
         <>
-            <div className="edit-note__container">
-                <div className="edit-note__title">
-                    <input type="text" className="title__input primary__font" placeholder="Title" />
+            <div className={`edit-note__container flex--column ${color}`}>
+                <div className="edit-note__title flex--row">
+                    <input type="text" className="title__input primary__font" placeholder="Title" value={title} onChange={(e) => dispatchNoteDetails({ type: "TITLE", payload: e.target.value })} />
+                    <div onClick={() => dispatchNoteDetails({ type: "PINNED" })}>
+                        {pinned ? <span className="material-icons pinned">push_pin</span> :
+                            <span className="material-icons unpinned">push_pin</span>}
+                    </div>
                 </div>
-                <RichTextEditor />
+                <RichTextEditor content={content} setValue={dispatchNoteDetails} />
+                {label && <div className="edit-note__label font__secondary" onClick={() => dispatchNoteDetails({ type: "LABEL", payload: "" })}>
+                    {label}
+                </div>}
                 <div className="edit-note__bottom flex--row">
-                    <div className="flex--row edit-note__colorpicker">
-                        <span class="material-icons colorpicker__btn" onClick={() => setColorlist(!colorlist)}>palette</span>
+                    <div className="flex--row edit-note__optionpicker">
+                        <span className="material-icons colorpicker__btn" onClick={() => { setLabellist(false); setColorlist(!colorlist) }}>palette</span>
                         {colorlist && <div className="color__list flex--row">
-                            <div className="color1"></div>
-                            <div className="color2"></div>
-                            <div className="color3"></div>
-                            <div className="color4"></div>
+                            <div className="color1" onClick={() => dispatchNoteDetails({ type: "COLOR", payload: "note--color1" })}></div>
+                            <div className="color2" onClick={() => dispatchNoteDetails({ type: "COLOR", payload: "note--color2" })}></div>
+                            <div className="color3" onClick={() => dispatchNoteDetails({ type: "COLOR", payload: "note--color3" })}></div>
+                            <div className="color4" onClick={() => dispatchNoteDetails({ type: "COLOR", payload: "note--color4" })}></div>
+                        </div>}
+                        <span className="material-icons labelpicker__btn" onClick={() => { setLabellist(!labellist); setColorlist(false) }}>label</span>
+                        {labellist && <div className="label__list flex--column font__secondary">
+                            <div onClick={() => dispatchNoteDetails({ type: "LABEL", payload: "Label 1" })}>Label 1</div>
+                            <div onClick={() => dispatchNoteDetails({ type: "LABEL", payload: "Label 2" })}>Label 2</div>
                         </div>}
                     </div>
-                    <select name="label__list" id="label__list" className="secondary__font label__list" onClick={() => setColorlist(false)}>
-                        <option value="No Label">No Label</option>
-                        <option value="Label 1">Label 1</option>
-                        <option value="Label 2">Label 2</option>
-                    </select>
-                    <button className="btn btn-color--primary btn-font--secondary text__small edit-note__add">Add</button>
+                    <button className="btn btn-color--primary btn-font--secondary text__small edit-note__add" onClick={() => newNoteAddHandler(noteDetails)}>Add</button>
                 </div>
             </div>
         </>
