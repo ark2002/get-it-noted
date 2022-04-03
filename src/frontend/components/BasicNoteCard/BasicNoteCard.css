@@ -1,0 +1,153 @@
+.note__container {
+    width: 37.5rem;
+    margin-left: auto;
+    margin-right: 20%;
+    margin-top: 3rem;
+    border: 1px solid var(--black-color);
+    height: fit-content;
+}
+
+.note__top {
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.pinned {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.unpinned {
+    color: var(--gray-color);
+    cursor: pointer;
+}
+
+.note__label {
+    margin: 0 1rem;
+    padding: 2px 5px;
+    font-size: 1.4rem;
+    background-color: var(--secondary-color);
+    width: fit-content;
+    cursor: pointer;
+}
+
+.note__copy {
+    font-size: 1.2rem;
+}
+
+.note__copy>ol {
+    display: block;
+    list-style-type: decimal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+.note__copy>ul {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1 em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+.note__copy>blockquote {
+    border-left: 4px solid var(--secondary-color);
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 1.6rem;
+    word-wrap:break-word;
+}
+
+.note__copy>ul>li,
+.note__copy>ol>li {
+    display: list-item;
+}
+
+.note__bottom {
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: space-between;
+}
+
+.note__optionpicker {
+    position: relative;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.note__optionpicker>.material-icons {
+    font-size: 3rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.label__list {
+    position: absolute;
+    top: 4rem;
+    left: 3rem;
+    background-color: var(--white-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.label__list>div {
+    font-size: 1.6rem;
+    width: 7rem;
+    padding: 5px;
+    /* border: 1px solid var(--black-color); */
+}
+
+.label__list>div:hover {
+    background-color: var(--secondary-color);
+}
+
+.color__list {
+    position: absolute;
+    top: 4rem;
+    left: 2rem;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    gap: 1rem
+}
+
+.color__list>div {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.color__list>div:hover {
+    border: 2px solid var(--white-color);
+}
+
+.color1 {
+    background-color: var(--white-color);
+}
+
+.color2 {
+    background-color: var(--sky-blue);
+}
+
+.color3 {
+    background-color: var(--baby-pink);
+}
+
+.color4 {
+    background-color: var(--aqua-green);
+}
+
+.label__list {
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.note__copy {
+    padding: 1rem;
+}
