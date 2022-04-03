@@ -8,6 +8,33 @@
 
 :root {
     --sky-blue: #BAD5F0;
+    --deep-blue: #0256a9;
     --baby-pink: #F8D7E8;
+    --dark-pink: #e72489;
     --aqua-green: #B3E4C7;
+    --leaf-green: #30ed7c;
+}
+
+li:hover {
+    font-weight: initial;
+}
+
+.note--color1 {
+    background-color: var(--white-color);
+    border: 1px solid var(--black-color);
+}
+
+.note--color2 {
+    background-color: var(--sky-blue);
+    border: 1px solid var(--deep-blue);
+}
+
+.note--color3 {
+    background-color: var(--baby-pink);
+    border: 1px solid var(--dark-pink);
+}
+
+.note--color4 {
+    background-color: var(--aqua-green);
+    border: 1px solid var(--leaf-green);
 }
