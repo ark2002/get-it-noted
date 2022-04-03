@@ -9,7 +9,6 @@ const BasicNoteCard = ({ note, setNotes }) => {
 
     const [colorlist, setColorlist] = useState(false);
     const [labellist, setLabellist] = useState(false);
-    // const [pinToggle, setPinToggle] = useState(false);
 
     const { auth } = useAuth();
 

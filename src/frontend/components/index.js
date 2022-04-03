@@ -6,3 +6,4 @@ export { RichTextEditor } from "./RichTextEditor/RichTextEditor"
 export { EditableNote } from "./EditableNote/EditabaleNote"
 export { BasicNoteCard } from "./BasicNoteCard/BasicNoteCard"
 export { NotesList } from "./NotesList/NotesList"
+export { PinnedNotesList } from "./PinnedNotesList/PinnedNotesList";
