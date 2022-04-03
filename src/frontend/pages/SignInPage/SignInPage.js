@@ -19,9 +19,10 @@ function SignInPage() {
 
     const signInHandler = async (user) => {
         const data = await signInService(user);
-        const {foundUser, encodedToken} = data;
+        const { foundUser, encodedToken } = data;
         if (encodedToken !== undefined) {
             localStorage.setItem("AUTH_TOKEN", encodedToken);
+            localStorage.setItem("USERNAME", foundUser.firstName);
             setAuth((auth) => ({
                 ...auth,
                 status: true,

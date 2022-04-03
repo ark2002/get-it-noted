@@ -5,3 +5,9 @@
 /* Font Awesome link */
 @import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
 /* Font Awesome link */
+
+:root {
+    --sky-blue: #BAD5F0;
+    --baby-pink: #F8D7E8;
+    --aqua-green: #B3E4C7;
+}

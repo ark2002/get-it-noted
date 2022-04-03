@@ -20,9 +20,10 @@ function SignUpPage() {
 
     const signUpHandler = async (user) => {
         const data = await signUpService(user);
-        const {createdUser, encodedToken} = data;
+        const { createdUser, encodedToken } = data;
         if (encodedToken !== undefined) {
             localStorage.setItem("AUTH_TOKEN", encodedToken);
+            localStorage.setItem("USERNAME", createdUser.firstName);
             setAuth((auth) => ({
                 ...auth,
                 status: true,

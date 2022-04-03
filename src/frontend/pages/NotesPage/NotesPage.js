@@ -1,9 +1,14 @@
 import React from "react";
+import { EditableNote } from "../../components";
+
+import "./NotesPage.css"
 
 const NotesPage = () => {
     return (
         <>
-            Notes Page
+            <div className="notespage__container flex--row">
+                <EditableNote />
+            </div>
         </>
     );
 }
