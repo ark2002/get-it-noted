@@ -53,15 +53,15 @@ const EditableNote = () => {
                     <div className="flex--row edit-note__optionpicker">
                         <span className="material-icons colorpicker__btn" onClick={() => { setLabellist(false); setColorlist(!colorlist) }} title="Choose Color">palette</span>
                         {colorlist && <div className="color__list flex--row">
-                            <div className="color1" onClick={() => dispatchNoteDetails({ type: "COLOR", payload: "note--color1" })}></div>
-                            <div className="color2" onClick={() => dispatchNoteDetails({ type: "COLOR", payload: "note--color2" })}></div>
-                            <div className="color3" onClick={() => dispatchNoteDetails({ type: "COLOR", payload: "note--color3" })}></div>
-                            <div className="color4" onClick={() => dispatchNoteDetails({ type: "COLOR", payload: "note--color4" })}></div>
+                            <div className="color1" onClick={() => { setColorlist(false); dispatchNoteDetails({ type: "COLOR", payload: "note--color1" }) }}></div>
+                            <div className="color2" onClick={() => { setColorlist(false); dispatchNoteDetails({ type: "COLOR", payload: "note--color2" }) }}></div>
+                            <div className="color3" onClick={() => { setColorlist(false); dispatchNoteDetails({ type: "COLOR", payload: "note--color3" }) }}></div>
+                            <div className="color4" onClick={() => { setColorlist(false); dispatchNoteDetails({ type: "COLOR", payload: "note--color4" }) }}></div>
                         </div>}
                         <span className="material-icons labelpicker__btn" onClick={() => { setLabellist(!labellist); setColorlist(false) }} title="Choose Label">label</span>
                         {labellist && <div className="label__list flex--column font__secondary">
-                            <div onClick={() => dispatchNoteDetails({ type: "LABEL", payload: "Label 1" })}>Label 1</div>
-                            <div onClick={() => dispatchNoteDetails({ type: "LABEL", payload: "Label 2" })}>Label 2</div>
+                            <div onClick={() => { setLabellist(false); dispatchNoteDetails({ type: "LABEL", payload: "Label 1" }) }}>Label 1</div>
+                            <div onClick={() => { setLabellist(false); dispatchNoteDetails({ type: "LABEL", payload: "Label 2" }) }}>Label 2</div>
                         </div>}
                     </div>
                     <button className="btn btn-color--primary btn-font--secondary text__small edit-note__add" onClick={() => newNoteAddHandler(noteDetails)}>Add</button>

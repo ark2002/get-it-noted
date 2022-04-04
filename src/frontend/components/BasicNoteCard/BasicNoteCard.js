@@ -60,15 +60,15 @@ const BasicNoteCard = ({ note, setNotes }) => {
             <div className="flex--row note__optionpicker">
                 <span className="material-icons colorpicker__btn" onClick={() => { setLabellist(false); setColorlist(!colorlist) }} title="Change Color">palette</span>
                 {colorlist && <div className="color__list flex--row">
-                    <div className="color1" onClick={() => colorPicker("note--color1")}></div>
-                    <div className="color2" onClick={() => colorPicker("note--color2")}></div>
-                    <div className="color3" onClick={() => colorPicker("note--color3")}></div>
-                    <div className="color4" onClick={() => colorPicker("note--color4")}></div>
+                    <div className="color1" onClick={() => { setColorlist(false); colorPicker("note--color1") }}></div>
+                    <div className="color2" onClick={() => { setColorlist(false); colorPicker("note--color2") }}></div>
+                    <div className="color3" onClick={() => { setColorlist(false); colorPicker("note--color3") }}></div>
+                    <div className="color4" onClick={() => { setColorlist(false); colorPicker("note--color4") }}></div>
                 </div>}
                 <span className="material-icons labelpicker__btn" onClick={() => { setLabellist(!labellist); setColorlist(false) }} title="Change Label">label</span>
                 {labellist && <div className="label__list flex--column font__secondary">
-                    <div onClick={() => labelPicker("Label 1")}>Label 1</div>
-                    <div onClick={() => labelPicker("Label 2")}>Label 2</div>
+                    <div onClick={() => { setLabellist(false); labelPicker("Label 1") }}>Label 1</div>
+                    <div onClick={() => { setLabellist(false); labelPicker("Label 2") }}>Label 2</div>
                 </div>}
                 <span className="material-icons" title="Archive Note">inventory_2</span>
                 <span className="material-icons" title="Trash Note">delete</span>

@@ -101,7 +101,6 @@
     font-size: 1.6rem;
     width: 7rem;
     padding: 5px;
-    /* border: 1px solid var(--black-color); */
 }
 
 .label__list>div:hover {

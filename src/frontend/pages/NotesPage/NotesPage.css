@@ -1,5 +1,6 @@
 .notespage__container {
     width: 100%;
+    min-height: 90vh;
 }
 
 .notes__list {
