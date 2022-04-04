@@ -1,4 +1,4 @@
-.edit-note__container {
+.note__container {
     width: 37.5rem;
     margin-left: auto;
     margin-right: 20%;
@@ -7,22 +7,10 @@
     height: fit-content;
 }
 
-.edit-note__title {
+.note__top {
     align-items: center;
-    justify-content: space-around;
-    background-color: inherit;
-}
-
-.title__input {
+    justify-content: space-between;
     padding: 1rem;
-    font-size: 2rem;
-    border: none;
-    font-weight: bold;
-    background-color: inherit;
-}
-
-.title__input:focus {
-    outline: none;
 }
 
 .pinned {
@@ -35,7 +23,7 @@
     cursor: pointer;
 }
 
-.edit-note__label {
+.note__label {
     margin: 0 1rem;
     padding: 2px 5px;
     font-size: 1.4rem;
@@ -44,20 +32,58 @@
     cursor: pointer;
 }
 
-.edit-note__bottom {
+.note__copy {
+    font-size: 1.2rem;
+}
+
+.note__copy>ol {
+    display: block;
+    list-style-type: decimal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+.note__copy>ul {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1 em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+.note__copy>blockquote {
+    border-left: 4px solid var(--secondary-color);
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 1.6rem;
+    word-wrap:break-word;
+}
+
+.note__copy>ul>li,
+.note__copy>ol>li {
+    display: list-item;
+}
+
+.note__bottom {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
     justify-content: space-between;
 }
 
-.edit-note__optionpicker {
+.note__optionpicker {
     position: relative;
     align-items: center;
     gap: 1rem;
+    padding: 1rem;
 }
 
-.edit-note__optionpicker>.material-icons {
+.note__optionpicker>.material-icons {
     font-size: 3rem;
     color: var(--primary-color);
     cursor: pointer;
@@ -65,7 +91,7 @@
 
 .label__list {
     position: absolute;
-    top: 3rem;
+    top: 4rem;
     left: 3rem;
     background-color: var(--white-color);
     border: 1px solid var(--secondary-color);
@@ -121,6 +147,6 @@
     cursor: pointer;
 }
 
-.btn.edit-note__add {
-    padding: 0.5rem;
+.note__copy {
+    padding: 1rem;
 }

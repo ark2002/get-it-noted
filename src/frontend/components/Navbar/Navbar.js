@@ -37,13 +37,11 @@ const Navbar = ({ searchRestrict }) => {
                     </button>
                 </div>}
                 <nav className="navbar__nav flex--row">
-                    <ul>
-                        <li onClick={() => setListVisibility(!listVisibility)}>
-                            <a className="flex--row nav__account__container"><span className="material-icons account-icon" title="Account">account_circle</span>
-                                <span className="font__primary text__small">{auth.userName}</span>▼
-                            </a>
-                        </li>
-                    </ul>
+                    <li onClick={() => setListVisibility(!listVisibility)}>
+                        <a className="flex--row nav__account__container"><span className="material-icons account-icon" title="Account">account_circle</span>
+                            <span className="font__primary text__small">{auth.userName}</span>▼
+                        </a>
+                    </li>
                 </nav>
             </header>
             {listVisibility && (!auth.status ? <div className="dropdown-list secondary__font text__small">
