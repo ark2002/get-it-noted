@@ -7,3 +7,5 @@ export { EditableNote } from "./EditableNote/EditabaleNote"
 export { BasicNoteCard } from "./BasicNoteCard/BasicNoteCard"
 export { NotesList } from "./NotesList/NotesList"
 export { PinnedNotesList } from "./PinnedNotesList/PinnedNotesList";
+export { TrashNote } from "./TrashNote/TrashNote"
+export { BasicNoteEditor } from "./BasicNoteEditor/BasicNoteEditor"
