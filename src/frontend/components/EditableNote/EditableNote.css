@@ -13,7 +13,7 @@
     background-color: inherit;
 }
 
-.title__input {
+.edit-title__input {
     padding: 1rem;
     font-size: 2rem;
     border: none;
@@ -21,7 +21,7 @@
     background-color: inherit;
 }
 
-.title__input:focus {
+.edit-title__input:focus {
     outline: none;
 }
 

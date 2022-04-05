@@ -27,7 +27,8 @@ const EditableNote = () => {
 
     const newNoteAddHandler = async () => {
         const response = await newNoteToDbService(auth.token, {
-            ...noteDetails
+            ...noteDetails,
+            trash:false
         });
         if (response !== undefined) {
             setNotes(response);
@@ -39,7 +40,7 @@ const EditableNote = () => {
         <>
             <div className={`edit-note__container flex--column ${color}`}>
                 <div className="edit-note__title flex--row">
-                    <input type="text" className="title__input primary__font" placeholder="Title" value={title} onChange={(e) => dispatchNoteDetails({ type: "TITLE", payload: e.target.value })} />
+                    <input type="text" className="edit-title__input primary__font" placeholder="Title" value={title} onChange={(e) => dispatchNoteDetails({ type: "TITLE", payload: e.target.value })} />
                     <div onClick={() => dispatchNoteDetails({ type: "PINNED" })}>
                         {pinned ? <span className="material-icons pinned" title="pin">push_pin</span> :
                             <span className="material-icons unpinned" title="unpin">push_pin</span>}
