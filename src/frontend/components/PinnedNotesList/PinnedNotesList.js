@@ -7,7 +7,7 @@ const PinnedNotesList = () => {
 
     const { notes, setNotes } = useNotes();
 
-    const pinnedNotes = notes.filter((note) => note.pinned);
+    const pinnedNotes = notes.filter((note) => note.pinned && !note.trash);
 
     return (
         <>
