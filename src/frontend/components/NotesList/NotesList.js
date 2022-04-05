@@ -5,7 +5,7 @@ import { BasicNoteCard } from "../BasicNoteCard/BasicNoteCard";
 const NotesList = () => {
 
     const { notes, setNotes } = useNotes();
-    const normalNotes = notes.filter((note) => !note.pinned);
+    const normalNotes = notes.filter((note) => !note.pinned && !note.trash);
 
     return (
         <>
