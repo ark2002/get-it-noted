@@ -1,0 +1,11 @@
+.ql-toolbar.ql-snow {
+    border: none;
+}
+
+.ql-container.ql-snow {
+    border: none;
+}
+
+p.ql-editor {
+    font-family: var(--secondary-font-family);
+}

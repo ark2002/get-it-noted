@@ -1,12 +1,13 @@
 import React from "react";
 import ReactQuill from 'react-quill';
+import { useRef, useEffect } from "react";
 
 import 'react-quill/dist/quill.snow.css';
-import './RichTextEditor.css'
+import './BasicNoteEditor.css'
 
 export const modules = {
     toolbar: {
-        container: "#toolbar",
+        container: "#toolbar2",
     }
 };
 
@@ -25,12 +26,21 @@ export const formats = [
 ];
 
 
-const RichTextEditor = ({ content, setValue }) => {
+const BasicNoteEditor = ({ content, setValue }) => {
+
+    const inputElement = useRef(null);
+
+    useEffect(() => {
+        if (inputElement.current) {
+            inputElement.current.focus();
+        }
+    }, []);
+
     return (
         <>
             <div className="flex--column editor__container">
                 <div className="richedi">
-                    <div id="toolbar">
+                    <div id="toolbar2">
                         <span className="ql-formats">
                             <button className="ql-bold" />
                             <button className="ql-italic" />
@@ -51,10 +61,10 @@ const RichTextEditor = ({ content, setValue }) => {
                     <ReactQuill
                         theme="snow"
                         value={content}
-                        onChange={value => setValue({ type: "CONTENT", payload: value })}
-                        placeholder={"Write something awesome..."}
+                        onChange={value => setValue({ type: "NEWCONTENT", payload: value })}
                         modules={modules}
                         formats={formats}
+                        ref={inputElement}
                     />
                 </div>
             </div>
@@ -62,4 +72,4 @@ const RichTextEditor = ({ content, setValue }) => {
     );
 }
 
-export { RichTextEditor };
+export { BasicNoteEditor };
