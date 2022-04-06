@@ -46,7 +46,6 @@ const RichTextEditor = ({ content, setValue }) => {
                         <span className="ql-formats">
                             <button className="ql-link" />
                             <button className="ql-image" />
-                            <button className="ql-video" />
                         </span>
                     </div>
                     <ReactQuill
