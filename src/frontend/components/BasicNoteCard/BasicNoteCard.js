@@ -1,4 +1,4 @@
-import React, { useState,useReducer } from "react";
+import React, { useState, useReducer } from "react";
 import { useAuth } from "../../context";
 import { basicNoteDetailsReducer } from "../../Reducer";
 import { updateNoteFromDbService } from "../../services";
@@ -18,6 +18,9 @@ const BasicNoteCard = ({ note, setNotes }) => {
         newTitle: title,
         newContent: content
     }
+
+    const colors = ["color1", "color2", "color3", "color4"];
+    const labels = ["Label 1", "Label 2"];
 
     const [basicNote, dispatchBasicNote] = useReducer(basicNoteDetailsReducer, basicNoteState);
     const { colorlist, labellist, titleToggle, contentToggle, newTitle, newContent } = basicNote;
@@ -116,15 +119,11 @@ const BasicNoteCard = ({ note, setNotes }) => {
             <div className="flex--row note__optionpicker">
                 <span className="material-icons colorpicker__btn" onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: false }); dispatchBasicNote({ type: "COLORLIST", payload: !colorlist }) }} title="Change Color">palette</span>
                 {colorlist && <div className="color__list flex--row">
-                    <div className="color1" onClick={() => { dispatchBasicNote({ type: "COLORLIST", payload: false }); colorPicker("note--color1") }}></div>
-                    <div className="color2" onClick={() => { dispatchBasicNote({ type: "COLORLIST", payload: false }); colorPicker("note--color2") }}></div>
-                    <div className="color3" onClick={() => { dispatchBasicNote({ type: "COLORLIST", payload: false }); colorPicker("note--color3") }}></div>
-                    <div className="color4" onClick={() => { dispatchBasicNote({ type: "COLORLIST", payload: false }); colorPicker("note--color4") }}></div>
+                    {colors.map((color) => <div className={color} onClick={() => { dispatchBasicNote({ type: "COLORLIST", payload: false }); colorPicker(`note--${color}`) }}></div>)}
                 </div>}
                 <span className="material-icons labelpicker__btn" onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: !labellist }); dispatchBasicNote({ type: "COLORLIST", payload: false }) }} title="Change Label">label</span>
                 {labellist && <div className="label__list flex--column font__secondary">
-                    <div onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: false }); labelPicker("Label 1") }}>Label 1</div>
-                    <div onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: false }); labelPicker("Label 2") }}>Label 2</div>
+                    {labels.map((label) => <div onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: false }); labelPicker(label) }}>{label}</div>)}
                 </div>}
                 <span className="material-icons" title="Archive Note">inventory_2</span>
                 <span className="material-icons" title="Trash Note" onClick={() => trashHandler()}>delete</span>
