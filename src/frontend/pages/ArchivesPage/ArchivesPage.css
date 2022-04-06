@@ -1,0 +1,11 @@
+.archive-list__title{
+    padding: 2rem 1rem 0rem;
+}
+
+.archive-list{
+    margin-top: 3rem;
+}
+
+.archive__page{
+    min-height: 90vh;
+}
