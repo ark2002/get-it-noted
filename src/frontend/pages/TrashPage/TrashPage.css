@@ -5,3 +5,7 @@
 .trashed-list{
     margin-top: 3rem;
 }
+
+.trash__page{
+    min-height: 90vh;
+}
