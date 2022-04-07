@@ -1,3 +1,7 @@
+.header__container{
+    position: relative;
+}
+
 .nav__account__container {
     align-items: center;
 }
