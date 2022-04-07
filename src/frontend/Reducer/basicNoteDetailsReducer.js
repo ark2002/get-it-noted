@@ -11,6 +11,8 @@ export const basicNoteDetailsReducer = (state, action) => {
             return { ...state, titleToggle: payload };
         case "CONTENTTOGGLE":
             return { ...state, contentToggle: payload };
+        case "PRIORITYLIST":
+            return { ...state, prioritylist: payload };
         case "NEWTITLE":
             return { ...state, newTitle: payload };
         case "NEWCONTENT":
