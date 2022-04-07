@@ -9,3 +9,4 @@ export { NotesList } from "./NotesList/NotesList"
 export { PinnedNotesList } from "./PinnedNotesList/PinnedNotesList";
 export { TrashNote } from "./TrashNote/TrashNote"
 export { BasicNoteEditor } from "./BasicNoteEditor/BasicNoteEditor"
+export { ArchiveNote } from "./ArchiveNote/ArchiveNote";

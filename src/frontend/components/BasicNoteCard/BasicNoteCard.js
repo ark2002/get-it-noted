@@ -1,14 +1,15 @@
 import React, { useState, useReducer } from "react";
-import { useAuth } from "../../context";
+import { useArchives, useAuth } from "../../context";
 import { basicNoteDetailsReducer } from "../../Reducer";
-import { updateNoteFromDbService } from "../../services";
+import { updateNoteFromDbService, addArchiveNoteService } from "../../services";
 import { BasicNoteEditor } from "../BasicNoteEditor/BasicNoteEditor";
 import "./BasicNoteCard.css";
 
 const BasicNoteCard = ({ note, setNotes }) => {
 
+    const { setArchives } = useArchives();
 
-    const { title, pinned, label, content, color, } = note;
+    const { _id, title, pinned, label, content, color, } = note;
 
     const basicNoteState = {
         colorlist: false,
@@ -88,6 +89,14 @@ const BasicNoteCard = ({ note, setNotes }) => {
         }
     }
 
+    const archiveHandler = async () => {
+        const response = await addArchiveNoteService(auth.token, note);
+        if (response !== undefined) {
+            setNotes(response.notes);
+            setArchives(response.archives)
+        }
+    };
+
     const handleContentEditBlur = (e) => {
 
         if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -125,7 +134,7 @@ const BasicNoteCard = ({ note, setNotes }) => {
                 {labellist && <div className="label__list flex--column font__secondary">
                     {labels.map((label) => <div onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: false }); labelPicker(label) }}>{label}</div>)}
                 </div>}
-                <span className="material-icons" title="Archive Note">inventory_2</span>
+                <span className="material-icons" title="Archive Note" onClick={() => archiveHandler(_id)}>inventory_2</span>
                 <span className="material-icons" title="Trash Note" onClick={() => trashHandler()}>delete</span>
             </div>
         </div>

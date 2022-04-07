@@ -61,7 +61,8 @@ const EditableNote = () => {
                         </div>}
                         <span className="material-icons labelpicker__btn" onClick={() => { setLabellist(!labellist); setColorlist(false) }} title="Choose Label">label</span>
                         {labellist && <div className="label__list flex--column font__secondary">
-                            {labels.map((label) => <div onClick={() => { setLabellist(false); dispatchNoteDetails({ type: "LABEL", payload: { label } }) }}>{label}</div>)}
+                            <div onClick={() => { setLabellist(false); dispatchNoteDetails({ type: "LABEL", payload: "Label 1" }) }}>Label 1</div>
+                            <div onClick={() => { setLabellist(false); dispatchNoteDetails({ type: "LABEL", payload: "Label 2" }) }}>Label 2</div>
                         </div>}
                     </div>
                     <button className="btn btn-color--primary btn-font--secondary text__small edit-note__add" onClick={() => newNoteAddHandler(noteDetails)}>Add</button>
