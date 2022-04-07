@@ -12,7 +12,7 @@ const Filters = () => {
             <div className="filter__selections  flex--row">
                 <div className="filter__labels flex--column">
                     <h3 className="filter__headings">Label</h3>
-                    <label className="filter__input-label flex--row"><input type="radio" name="label" onChange={() => dispatchFilters({ type: "LABELSFILTER", payload: "LABEL 1" })}  autoFocus/>Label 1</label>
+                    <label className="filter__input-label flex--row"><input type="radio" name="label" onChange={() => dispatchFilters({ type: "LABELSFILTER", payload: "LABEL 1" })} autoFocus />Label 1</label>
                     <label className="filter__input-label flex--row"><input type="radio" name="label" onChange={() => dispatchFilters({ type: "LABELSFILTER", payload: "LABEL 2" })} />Label 2</label>
                 </div>
                 <div className="filter__priority flex--column">
