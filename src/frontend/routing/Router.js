@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { ArchivesPage, LabelsPage, LandingPage, NotesPage, SignInPage, SignUpPage, TrashPage } from "../pages";
+import { ArchivesPage, LabelsPage, LandingPage, NotesPage, SearchPage, SignInPage, SignUpPage, TrashPage } from "../pages";
 import { PrivateRoute } from "../components";
 import { useAuth } from "../context"
 
@@ -15,6 +15,7 @@ const Router = () => {
                 <Route path="/labels" element={<PrivateRoute><LabelsPage /></PrivateRoute>} />
                 <Route path="/archives" element={<PrivateRoute><ArchivesPage /></PrivateRoute>} />
                 <Route path="/trash" element={<PrivateRoute><TrashPage /></PrivateRoute>} />
+                <Route path="/search" element={<PrivateRoute><SearchPage /></PrivateRoute>} />
                 {!status && (
                     <>
                         <Route path="/signin" element={<SignInPage />} />

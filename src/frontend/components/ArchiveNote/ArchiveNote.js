@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "react-moment";
 import { useAuth, useNotes } from "../../context";
 import { restoreArchivedNoteService, deleteArchivedNote } from "../../services";
 
@@ -6,7 +7,7 @@ import "./ArchiveNote.css"
 
 const ArchiveNote = ({ note, setArchives }) => {
 
-    const { _id, title, label, content, color } = note;
+    const { _id, title, label, content, color, priority, createdAt } = note;
 
     const { auth } = useAuth();
     const { setNotes } = useNotes();
@@ -34,12 +35,22 @@ const ArchiveNote = ({ note, setArchives }) => {
                 </div>
                 <p className="note__copy secondary__font" dangerouslySetInnerHTML={{ __html: content }}></p>
             </div>
-            {label && <div className="note__label font__secondary">
-                {label}
-            </div>}
+            <div className="flex--row">
+                {label && <div className="note__label font__secondary">
+                    {label}
+                </div>}
+                <div className="font__secondary edit-note__priority">
+                    {priority}
+                </div>
+            </div>
             <div className="flex--row note__optionpicker">
                 <span className="material-icons" title="Restore Note" onClick={() => restoreHandler()}>unarchive</span>
                 <span className="material-icons" title="Delete Note" onClick={() => deleteHandler()}>delete_forever</span>
+                <div className="note__moment secondary__font">
+                    <Moment fromNow>
+                        {createdAt}
+                    </Moment>
+                </div>
             </div>
         </div>
     );

@@ -4,27 +4,30 @@ import { basicNoteDetailsReducer } from "../../Reducer";
 import { updateNoteFromDbService, addArchiveNoteService } from "../../services";
 import { BasicNoteEditor } from "../BasicNoteEditor/BasicNoteEditor";
 import "./BasicNoteCard.css";
+import Moment from "react-moment";
 
 const BasicNoteCard = ({ note, setNotes }) => {
 
     const { setArchives } = useArchives();
 
-    const { _id, title, pinned, label, content, color, } = note;
+    const { _id, title, pinned, label, content, color, priority, createdAt } = note;
 
     const basicNoteState = {
         colorlist: false,
         labellist: false,
         titleToggle: true,
         contentToggle: true,
+        prioritylist: false,
         newTitle: title,
         newContent: content
     }
 
     const colors = ["color1", "color2", "color3", "color4"];
     const labels = ["Label 1", "Label 2"];
+    const priorities = ["HIGH", "MEDIUM", "LOW"];
 
     const [basicNote, dispatchBasicNote] = useReducer(basicNoteDetailsReducer, basicNoteState);
-    const { colorlist, labellist, titleToggle, contentToggle, newTitle, newContent } = basicNote;
+    const { colorlist, labellist, titleToggle, contentToggle, prioritylist, newTitle, newContent } = basicNote;
 
     const { auth } = useAuth();
 
@@ -78,6 +81,16 @@ const BasicNoteCard = ({ note, setNotes }) => {
         }
     }
 
+    const priorityPicker = async (newPriority) => {
+        const response = await updateNoteFromDbService(auth.token, {
+            ...note,
+            priority: newPriority
+        });
+        if (response !== undefined) {
+            setNotes(response)
+        }
+    }
+
     const trashHandler = async () => {
         const response = await updateNoteFromDbService(auth.token, {
             ...note,
@@ -122,22 +135,37 @@ const BasicNoteCard = ({ note, setNotes }) => {
                     {contentToggle ? <p className="note__copy secondary__font" dangerouslySetInnerHTML={{ __html: newContent }} onClick={() => dispatchBasicNote({ type: "CONTENTTOGGLE", payload: false })}></p> :
                         <BasicNoteEditor content={newContent} setValue={dispatchBasicNote} />}</div>
             </div>
-            {label && <div className="note__label font__secondary" onClick={() => labelPicker("")}>
-                {label}
-            </div>}
+            <div className="flex--row">
+                {label && <div className="note__label font__secondary" onClick={() => labelPicker("")}>
+                    {label}
+                </div>}
+                <div className="font__secondary edit-note__priority">
+                    {priority}
+                </div>
+            </div>
             <div className="flex--row note__optionpicker">
-                <span className="material-icons colorpicker__btn" onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: false }); dispatchBasicNote({ type: "COLORLIST", payload: !colorlist }) }} title="Change Color">palette</span>
+                <span className="material-icons colorpicker__btn" onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: false }); dispatchBasicNote({ type: "PRIORITYLIST", payload: false }); dispatchBasicNote({ type: "COLORLIST", payload: !colorlist }) }} title="Change Color">palette</span>
                 {colorlist && <div className="color__list flex--row">
                     {colors.map((color) => <div className={color} onClick={() => { dispatchBasicNote({ type: "COLORLIST", payload: false }); colorPicker(`note--${color}`) }}></div>)}
                 </div>}
-                <span className="material-icons labelpicker__btn" onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: !labellist }); dispatchBasicNote({ type: "COLORLIST", payload: false }) }} title="Change Label">label</span>
+                <span className="material-icons labelpicker__btn" onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: !labellist }); dispatchBasicNote({ type: "COLORLIST", payload: false }); dispatchBasicNote({ type: "PRIORITYLIST", payload: false }); }} title="Change Label">label</span>
                 {labellist && <div className="label__list flex--column font__secondary">
                     {labels.map((label) => <div onClick={() => { dispatchBasicNote({ type: "LABELLIST", payload: false }); labelPicker(label) }}>{label}</div>)}
                 </div>}
+                <span className="material-icons labelpicker__btn" title="Choose Priority" onClick={() => { dispatchBasicNote({ type: "PRIORITYLIST", payload: !prioritylist }); dispatchBasicNote({ type: "COLORLIST", payload: false }); dispatchBasicNote({ type: "LABELLIST", payload: false }); }}>assignment_late</span>
+                {prioritylist && <div className="priority__list flex--column font__secondary">
+                    {priorities.map((priority) => <div onClick={() => { dispatchBasicNote({ type: "PRIORITYLIST", payload: false }); priorityPicker(priority) }}>{priority}</div>)}
+                </div>}
                 <span className="material-icons" title="Archive Note" onClick={() => archiveHandler(_id)}>inventory_2</span>
                 <span className="material-icons" title="Trash Note" onClick={() => trashHandler()}>delete</span>
+                <div className="note__moment secondary__font">
+                    <Moment fromNow>
+                        {createdAt}
+                    </Moment>
+                </div>
             </div>
         </div>
+
     );
 }
 

@@ -1,5 +1,15 @@
 .landingpage__container{
-    height: 100vh;
+    min-height: 90vh;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+}
+.landingpage__aside{
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    gap:10rem;
+}
+
+.hero__img{
+    height: 30rem;
 }

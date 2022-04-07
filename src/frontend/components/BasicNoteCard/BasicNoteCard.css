@@ -175,3 +175,7 @@
 .note__copy {
     padding: 1rem;
 }
+
+.note__moment {
+    margin-left: auto;
+}

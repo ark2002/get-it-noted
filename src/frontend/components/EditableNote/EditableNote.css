@@ -35,13 +35,23 @@
     cursor: pointer;
 }
 
-.edit-note__label {
+.edit-note__label{
     margin: 0 1rem;
     padding: 2px 5px;
     font-size: 1.4rem;
     background-color: var(--secondary-color);
     width: fit-content;
     cursor: pointer;
+}
+
+.edit-note__priority {
+    margin: 0 1rem;
+    padding: 2px 5px;
+    font-size: 1.4rem;
+    width: fit-content;
+    color :var(--primary-color);
+    border: 1px solid var(--primary-color);
+    margin-left: auto;
 }
 
 .edit-note__bottom {
@@ -63,21 +73,32 @@
     cursor: pointer;
 }
 
-.label__list {
+.label__list,
+.priority__list {
     position: absolute;
-    top: 3rem;
-    left: 3rem;
     background-color: var(--white-color);
     border: 1px solid var(--secondary-color);
+    padding: 1rem;
+    cursor: pointer;
 }
 
-.label__list>div {
+.label__list {
+    top: 3rem;
+    left: 3rem;
+}
+
+.priority__list{
+    top:3rem;
+    left:6rem;
+}
+
+.label__list>div,.priority__list>div {
     font-size: 1.6rem;
     width: 7rem;
     padding: 5px;
 }
 
-.label__list>div:hover {
+.label__list>div:hover,.priority__list>div:hover {
     background-color: var(--secondary-color);
 }
 
@@ -116,10 +137,6 @@
     background-color: var(--aqua-green);
 }
 
-.label__list {
-    padding: 1rem;
-    cursor: pointer;
-}
 
 .btn.edit-note__add {
     padding: 0.5rem;

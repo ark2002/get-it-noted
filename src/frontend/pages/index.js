@@ -5,3 +5,4 @@ export { SignUpPage } from "./SignUpPage/SignUpPage";
 export { TrashPage } from "./TrashPage/TrashPage";
 export { ArchivesPage } from "./ArchivesPage/ArchivesPage";
 export { LabelsPage } from "./LabelsPage/LabelsPage";
+export { SearchPage } from "./SearchPage/SearchPage";
