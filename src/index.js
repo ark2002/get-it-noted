@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { ArchivesProvider, AuthProvider, NotesProvider } from "./frontend/context";
+import { ArchivesProvider, AuthProvider, FilterProvider, NotesProvider } from "./frontend/context";
 
 // Call make Server
 makeServer();
@@ -15,7 +15,9 @@ ReactDOM.render(
       <AuthProvider>
         <NotesProvider>
           <ArchivesProvider>
-            <App />
+            <FilterProvider>
+              <App />
+            </FilterProvider>
           </ArchivesProvider>
         </NotesProvider>
       </AuthProvider>
