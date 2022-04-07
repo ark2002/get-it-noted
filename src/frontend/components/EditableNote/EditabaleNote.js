@@ -36,7 +36,6 @@ const EditableNote = () => {
             trash: false,
             createdAt: moment()
         });
-        console.log(response);
         if (response !== undefined) {
             setNotes(response);
             dispatchNoteDetails({ type: "RESET", payload: noteInitialState });
