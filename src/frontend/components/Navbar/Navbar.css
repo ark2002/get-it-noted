@@ -1,4 +1,4 @@
-.header__container{
+.header__container {
     position: relative;
 }
 
@@ -8,6 +8,10 @@
 
 .material-icons.account-icon {
     font-size: 4rem;
+}
+
+li:hover>.dropdown-list {
+    font-weight: 400;
 }
 
 .dropdown-list {
